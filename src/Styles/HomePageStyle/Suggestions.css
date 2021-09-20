@@ -1,0 +1,66 @@
+.Suggestions {
+    background-color: white;
+    width: 60%;
+    color:black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 4rem;
+}
+.Suggestions h5 {
+    color:black;
+    margin-bottom: 1.5rem;
+}
+.GridSuggestions {
+    margin: 0;
+    display: grid;
+    gap: 1rem 1rem;
+    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(4,1fr);
+}
+
+.SuggestionsImg1 {
+    background-color: orange;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.SuggestionsImg2 {
+    background-color:blue;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.SuggestionsImg3 {
+    background-color:rgb(148, 243, 184);
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.SuggestionsImg4 {
+    background-color:rgb(150, 148, 243);
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+.SuggestionsImg5 {
+    background-color:rgb(148, 224, 243);
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.SuggestionsImg6 {
+    background-color:rgb(96, 116, 108);
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+.SuggestionsImg7 {
+    background-color:rgb(150, 148, 243);
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+.SuggestionsImg8 {
+    background-color:rgb(61, 112, 128);
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}

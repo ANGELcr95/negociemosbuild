@@ -1,0 +1,71 @@
+.Information {
+    margin-top: 0;
+    width: 100%;
+    height: 7vh;
+    width: 100%;
+			color: #fff;
+			background: linear-gradient(45deg,rgb(247, 245, 245),rgb(230, 230, 230),rgba(223, 255, 244, 0.87),rgb(189, 189, 189));
+			background-size: 400% 400%;
+			position: relative;
+			animation: cambiar 10s ease-in-out infinite;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+}
+
+@keyframes cambiar{
+    0%{background-position: 0 50%;}
+    50%{background-position: 100% 50%;}
+    100%{background-position: 0 50%;}
+}
+.NetworkInformation {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+
+.NetworkInformation p{
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 0.15rem solid rgb(17, 17, 17);
+}
+
+.NetworkInformation span{
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: 0.15rem solid rgb(54, 54, 54);
+  
+}
+.Loginbtn {
+
+}
+
+.Loginbtn button {
+    background-color: cornflowerblue;
+    color: white;
+    border:none;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.References {
+    display: flex;
+    align-items: center;
+    
+}
+.References a{
+    margin-left: 0.5rem;
+}
+    
+
+.Track{
+    display: flex;
+    align-items: center;
+}
+.Track a{
+   margin-right: 0.5rem;
+}

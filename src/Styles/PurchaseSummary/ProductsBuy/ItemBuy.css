@@ -1,0 +1,35 @@
+.ItemBuy {
+    border-bottom: 0.2rem solid rgb(212, 210, 210);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.ImgBuyCrud {
+    width: 38%;
+}
+
+.ImgBuyCrud img{
+    max-height:100%; 
+    max-width:100%;
+}
+.DescriptionBuyCrud {
+    width: 28%;
+    font-size: 0.9rem;
+    text-align: left;
+} 
+
+.DescriptionBuyCrud button{
+    margin-top: 1rem;
+    font-size: 0.6rem;
+    text-align: left;
+} 
+
+.Price {
+    width: 30%;
+    font-size: 1rem;
+    color: green;
+    text-align: left;
+}
+

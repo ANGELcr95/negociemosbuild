@@ -3,8 +3,7 @@ import axios from "axios"
 const postToken = async () => {
 
     const postTodoContainer = async () => {
-        // var raw = `{\n	\"username\": \"${dataForm.username}"\,\n	\"password\": \"${dataForm.password}\"\n}`;
-
+        
         var requestOptions = {
             method:'POST',
             url:'/todos',

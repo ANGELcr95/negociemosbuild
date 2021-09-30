@@ -1,7 +1,6 @@
 /* eslint-disable */
 // mas de un ducks productos login 
 // import axios from 'axios'
-import data from '../data/items.json'
 
 // constantes
 const dataProducts ={
@@ -24,14 +23,14 @@ export default function negociemosReducer(state = dataProducts, action){
 
 // actions la axion cosume la api, modificar pasar a otra pagina
 
-export const getProductsAction =() => (dispatch, getState) =>{  //todo esto es action
+export const getProductsAction =(dataNoObs) => (dispatch, getState) =>{  //todo esto es action
 // primer arrw recibimos prametros para enviar a esta funcion algunas si otras no
 //dispatch:activar el reducer
 // obtener la data del estate
-    const res = data 
+
     dispatch({
         type: GET_PRODUCTS_FINE,
-        payload: res
+        payload: dataNoObs
     })
 
     //http://181.143.234.138:8080/api.atlas.negociemos/rest/ws/items?descripcion&id_item=&id_liprec=&id_lidesc=&id_laboratorio=GF

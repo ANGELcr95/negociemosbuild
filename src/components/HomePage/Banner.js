@@ -6,19 +6,21 @@ import data from "../../data/items.json"
 import {useDispatch, useSelector} from 'react-redux'
 import {getProductsAction} from '../../redux/negociemosDucks'
 
+
 const Banner = () => {
     const dispatch = useDispatch()
 
+    useEffect(()=> {
+        const dataNoObs = data.filter(data=> {return data.PRECIO_MIN_1 != 1 && data.PRECIO_MIN_1 != null})
+        dispatch(getProductsAction(dataNoObs)) 
+    },[])
+
     const infoBanner = useSelector(store=> store.dataProducts.array)
 
-    const[currentPage] = useState(Math.floor(Math.random()*(data.length-5))) 
+    const[currentPage] = useState(Math.floor(Math.random()*(infoBanner.length-5))) 
     let[indexOfFirstPost,setIndexOfFirstPost] = useState(currentPage)
     let[indexOfLastPost,setIndexOfLastPost] = useState(currentPage+1)
 
-
-    useEffect(()=> {
-       dispatch(getProductsAction()) 
-    },[])
 
     const pageNumber = []
 

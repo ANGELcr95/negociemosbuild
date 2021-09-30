@@ -14,7 +14,7 @@ const ItemBuy = ({itemBuy}) => {
     
 
     const deleteItem = (id) => {
-        const deleteCountItem = counItem.filter(counItem=> {return counItem.ID_CODBAR != id})
+        const deleteCountItem = counItem.filter(counItem=> {return counItem.item_ext != id})
         dispatch(getCountDeleteProductBuyAction(deleteCountItem))
     }
 
@@ -30,14 +30,14 @@ const ItemBuy = ({itemBuy}) => {
     return (
         <div className="ItemBuy">
             <div className="ImgBuyCrud">
-            {itemBuy.ID_CODBAR? <img src={`img/${itemBuy.ID_CODBAR}.jpg`} alt="img" natural></img>:<img src={"img/036600813719.jpg"} alt="404"></img>}
+            {itemBuy.item_ext? <img src={`img/${itemBuy.item_ext}.jpg`} alt="img" natural></img>:<img src={"img/036600813719.jpg"} alt="404"></img>}
             </div>
             <div className="DescriptionBuyCrud">
-            { itemBuy.DESCRIPCION ? <h5>{itemBuy.DESCRIPCION}</h5>:null}
-            {itemBuy.PRECIO_MIN_1? <p>Cantidad: {itemBuy.AMOUNT}</p>:null}
+            { itemBuy.item_nombre ? <h5>{itemBuy.item_nombre}</h5>:null}
+            {itemBuy.valor_unitario? <p>Cantidad: {itemBuy.cantidad}</p>:null}
             <Button 
                 // disabled={!addCar}
-                onClick={()=>{ deleteItem(itemBuy.ID_CODBAR)
+                onClick={()=>{ deleteItem(itemBuy.item_ext)
                     // dispatch(getCountProductBuyAction(item.length != 0? item:itemLocal))
                 }}
                 type="number" className="Buy" variant="contained" size="medium" color="secondary"
@@ -50,7 +50,7 @@ const ItemBuy = ({itemBuy}) => {
                 </Link> */}
             </div>
             <div className="Price">
-                {itemBuy.PRECIO_MIN_1? <h4>{formatNumber(itemBuy.PRECIO_MIN_1)} </h4>:null}
+                {itemBuy.valor_unitario? <h4>{formatNumber(itemBuy.valor_unitario)} </h4>:null}
             </div>
             
         </div>

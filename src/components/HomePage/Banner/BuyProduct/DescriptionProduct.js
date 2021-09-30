@@ -34,13 +34,19 @@ const DescriptionProduct = () => {
     const onSubmit = data => {
         
         const productProperties = {
-            
-            DESCRIPCION: item.DESCRIPCION,
-            ID_CODBAR:item.ID_CODBAR,
-            CMLINEAS_DESCRIPCION:item.CMLINEAS_DESCRIPCION,
-            PRECIO_MIN_1:item.PRECIO_MIN_1,
-            ULTIMO_COSTO_ED:item.ULTIMO_COSTO_ED,
-            AMOUNT: data.AMOUNT
+            item_id: item.ID_ITEM,
+            item_ext: item.ID_CODBAR,
+            item_nombre: item.DESCRIPCION,
+            item_referencia: item.ID_REFERENCIA,
+            cantidad: data.AMOUNT,
+            valor_unitario: item.PRECIO_MIN_1,
+            porc_dcto: item.PORC_DES1,
+            valor_dcto: "0",
+            porc_dcto_extra: "0",
+            valor_dcto_extra: "0",
+            subtotal: item.PRECIO_MIN_1* data.AMOUNT,
+            valor_total:item.PRECIO_MIN_1* data.AMOUNT
+
         }
         dispatch(getCountProductBuyAction(productProperties))
     };
@@ -85,7 +91,7 @@ const DescriptionProduct = () => {
                         }
                     </div>
                     <p>
-                    {item.DESC_ITEM_PADRE}Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los .
+                    {item.DESC_ITEM_PADRE}
                     </p>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="Amount">

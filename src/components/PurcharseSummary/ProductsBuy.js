@@ -1,7 +1,6 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect, useState }  from 'react';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import Checkbox from '@material-ui/core/Checkbox';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
 import HouseIcon from '@material-ui/icons/House';
 import BusinessIcon from '@material-ui/icons/Business';
@@ -9,37 +8,30 @@ import "../../Styles/PurchaseSummary/ProductsBuy.css"
 import ItemBuy from './ProductsBuy/ItemBuy';
 import Button from '@material-ui/core/Button';
 import { useSelector } from 'react-redux';
-const nodemailer = require("nodemailer");
-
-
+import { useForm } from 'react-hook-form';
+import postEmail from '../../services/postEmail';
+import { FormControl,RadioGroup, Radio, FormControlLabel} from '@material-ui/core';
+import postPedido from '../../services/postPedido';
 
 const ProductsBuy = () => {
 
-    const [state, setState] = React.useState({
-        checkedA: false,
-        checkedB: false,
-        checkedC: false,
-      });
-    
-    const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-    };
-    
-    // let itemsBuy = JSON.parse(window.localStorage.getItem("itemsBuy"))
+    const { register, handleSubmit,reset } = useForm();
+
     let itemsBuy = useSelector(store=> store.countBuyProduct)
-    
 
     if(!itemsBuy){
         itemsBuy = []
     }
-     
     let sum = 0
     for (let i = 0; i < itemsBuy.length; i++) {
-        const element = Number(itemsBuy[i].PRECIO_MIN_1 )*Number(itemsBuy[i].AMOUNT )
+        const element = Number(itemsBuy[i].valor_unitario )*Number(itemsBuy[i].cantidad)
         sum = element + sum
+        console.log(Number(itemsBuy[i].valor_unitario ))
+        console.log(Number(itemsBuy[i].cantidad))
         console.log(element)
     }
 
+    console.log(itemsBuy)
 
     function formatNumber(number) {
         return new Intl.NumberFormat("ES-MX",{
@@ -48,48 +40,59 @@ const ProductsBuy = () => {
         }).format(number)
     }
 
+    const onSubmit = dataBuy => {
 
-    const renderItemsBuy = itemsBuy.map(itemBuy=> <ItemBuy key={itemsBuy.ID_ITEM} itemBuy={itemBuy} sum={sum}/>)
+        let ObjectDataBuy = {
+            "cliente_codigo": "1018421403",
+            "cliente_sucursal": "00",
+            "subtotal": sum,
+            "valor_dcto": "0",
+            "valor_iva": "0",
+            "valor_total": sum,
+            "email":dataBuy.email ,
+            "movil": dataBuy.movil,
+            "telefono": dataBuy.telefono,
+            "contacto": dataBuy.contacto,
+            "direccion":dataBuy.direccion,
+            "lista_precio":"01",
+            "lista_dcto":"10",
+            "forma_pago_id":dataBuy.forma_pago_id,
+            "ciudad_corres_id":"77076001",
+            "ciudad_corres_desc":dataBuy.ciudad,
+            "items": itemsBuy
+        }
+        let ObjectDataEmail = {
+            "valor_total": sum,
+            "email":dataBuy.email ,
+            "contacto": dataBuy.contacto,
+            "direccion":dataBuy.direccion,
+            "lista_precio":"01",
+            "lista_dcto":"10",
+            "forma_pago_id":dataBuy.forma_pago_id,
+            "ciudad_corres_id":"77076001",
+            "ciudad_corres_desc":dataBuy.ciudad,
+            "items": itemsBuy
+        }
+            // reset()
+        console.log(ObjectDataBuy)
 
-
-
-
-// async..await is not allowed in global scope, must use a wrapper
-const sendMail =async () => {
-  // Generate test SMTP service account from ethereal.email
-  // Only needed if you don't have a real mail account for testing
-  let testAccount = await nodemailer.createTestAccount();
-
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtp.ethereal.email",
-    port: 587,
-    secure: true, // true for 465, false for other ports
-    auth: {
-      user: testAccount.user, // generated ethereal user
-      pass: testAccount.pass, // generated ethereal password
-    },
-  });
-
-  // send mail with defined transport object
-  let info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <foo@example.com>', // sender address
-    to: "miguel-angelcr@hotmail.com, mcamacho@gekoestudio.com", // list of receivers
-    subject: "Hello ✔", // Subject line
-    text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
-  });
-
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-  // Preview only available when sending through an Ethereal account
-  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-}
-
-    
-    
+        if(itemsBuy.length > 0 ) {
+            console.log("su hizo peticion")
+            reset()
+            // const postFunc = async () => {
+            //     const responsePedido = await postPedido(ObjectDataBuy)
+            //     const responseEmail = await postEmail(ObjectDataEmail)
+            //     if(responsePedido.status == 200 && responseEmail.status == 200) {
+            //         reset()    
+            //     }
+            // }
+            // postFunc() 
+        } else {
+            console.log("no peticion")
+        }
+    }
+     
+    const renderItemsBuy = itemsBuy.map(itemBuy=> <ItemBuy key={itemsBuy.item_id} itemBuy={itemBuy} sum={sum}/>)
 
     return (
         <div className="ProductsBuy">
@@ -100,96 +103,109 @@ const sendMail =async () => {
             <div className='DescriptionPay'>
                 <div className='DescriptionBuy '>
                     <h3>Detalles de la facturacion y despacho</h3>
-                    <div className="DescriptionInfoBuy">
-                        <div className="SendAddress">
-                            <h5>Distribuidora Negociemos</h5>
-                            <p>Nit: 1234.567.89</p>
-                            <p>Carrera 12# 2-56,piso 2</p>
-                            <p>Telefono: 356 789</p>
-                            <p>Cali, Valle del Cauca</p>
-                        </div>
-                        <div className="DeliveryAddress">
-                            <h5>Domicilio de Entrega</h5>
-                            <div className="Name">  
-                                <TextField id="filled-basic" label="Nombre" variant="filled" />
-                                <TextField id="filled-basic" label="Apellido" variant="filled" />
+                    <form onSubmit={handleSubmit(onSubmit)}>
+
+                        <div className="DescriptionInfoBuy">
+
+                            <div className="SendAddress">
+                                <h5>Distribuidora Negociemos</h5>
+                                <p>Nit: 1234.567.89</p>
+                                <p>Carrera 12# 2-56,piso 2</p>
+                                <p>Telefono: 356 789</p>
+                                <p>Cali, Valle del Cauca</p>
                             </div>
-                            <div className="Info">
-                                <TextField id="filled-basic" label="Dirección" variant="filled" />
-                            </div>
-                            <div className="InfoPlace">
-                                <TextField id="filled-basic" label="Piso/Barrio/Oficina" variant="filled" />
-                                <TextField id="filled-basic" label="Telefono" variant="filled" />
-                            </div>
-                            <div className="InfoSend">
-                                <TextField id="filled-basic" label="Ciudad" variant="filled" />
-                                <TextField id="filled-basic" label="Departamento" variant="filled" />
-                            </div>
-                        </div>
-                        <div className="PayProducts">
-                            <h5>Domicilio de Entrega</h5>
-                            <div className="Pay">
-                                <div className="PSE">
-                                    <FormControlLabel
-                                        control={
-                                        <Checkbox
-                                            checked={state.checkedA}
-                                            onChange={handleChange}
-                                            name="checkedA"
-                                            color="primary"
-                                        />
-                                        }
-                                        label={<CreditCardIcon fontSize="large" color="primary"/> }
-                                    />
-                                    <p>Tarjeta de credito PSE</p>
+
+                            <div className="DeliveryAddress">
+                                <h5>Domicilio de Entrega</h5>
+                                <div className="Info">  
+                                    <TextField id="filled-basic" {...register("contacto", {required: true})} label="Nombre" variant="filled" />
+                                    {/* <TextField id="filled-basic" {...register("apellido", {required: true})} label="Apellido" variant="filled" /> */}
                                 </div>
-                                <div className="UponDelivery">
-                                    <FormControlLabel
-                                        control={
-                                        <Checkbox
-                                            checked={state.checkedB}
-                                            onChange={handleChange}
-                                            name="checkedB"
-                                            color="primary"
-                                            label="PAGO"
-                                        />
-                                        }
-                                        label={<HouseIcon fontSize="large" color="primary"/> }
-                                    />
-                                    <p>Pago contraentrega</p>
+                                <div className="Info">
+                                    <TextField id="filled-basic" {...register("email", {required: true})} label="Email" variant="filled" />
                                 </div>
-                                <div className="Bank">
-                                    <FormControlLabel
-                                        control={
-                                        <Checkbox
-                                            checked={state.checkedC}
-                                            onChange={handleChange}
-                                            name="checkedC"
-                                            color="primary"
-                                        />
-                                        }
-                                        label={<BusinessIcon fontSize="large" color="primary"/> }
-                                    />
-                                    <p>Transferencia bancaria</p>
+                                {/* <div className="InfoPLace">
+                                    <TextField id="filled-basic" {...register("direccion", {required: true})} label="Dirección" variant="filled" />
+                                </div> */}
+                                <div className="InfoPlace">
+                                    <TextField id="filled-basic" {...register("telefono", {required: true})} label="Telefono" variant="filled" />
+                                    <TextField id="filled-basic" {...register("movil", {required: true})} label="Movil" variant="filled" />
                                 </div>
-                            </div>      
+                                <div className="InfoSend">
+                                    <TextField id="filled-basic" {...register("direccion", {required: true})} label="Dirección" variant="filled" />
+                                    <TextField id="filled-basic" {...register("ciudad", {required: true})} label="Ciudad" variant="filled" />
+                                </div>
+                            </div>
+                            <div className="PayProducts">
+                                <h5>Domicilio de Entrega</h5>
+                                <FormControl >
+                                <RadioGroup
+                                  aria-label="gender"
+                                //   defaultValue="female"
+                                  name="radio-buttons-group"
+                                >
+                                <div className="Pay">
+                                    <div className="PSE">
+                                        <FormControlLabel
+                                            control={
+                                            <Radio
+                                                color="primary"
+                                            />
+                                            }
+                                            name="radio-buttons-group"
+                                            value="1"
+                                            label={<CreditCardIcon fontSize="large" color="primary"/> }
+                                            {...register("forma_pago_id", {required: true})}
+                                        />
+                                        <p>Tarjeta de credito PSE</p>
+                                    </div>
+                                    <div className="UponDelivery">
+                                        <FormControlLabel
+                                            control={
+                                            <Radio
+                                                color="primary"
+                                            />
+                                            }
+                                            name="radio-buttons-group"
+                                            value="2"
+                                            label={<HouseIcon fontSize="large" color="primary"/> }
+                                            {...register("forma_pago_id", {required: true})}
+                                        />
+                                        <p>Pago contraentrega</p>
+                                    </div>
+                                    <div className="Bank">
+                                        <FormControlLabel
+                                            control={
+                                            <Radio
+                                                color="primary"
+                                                />
+                                            }
+                                            name="radio-buttons-group"
+                                            value="3"
+                                            label={<BusinessIcon fontSize="large" color="primary"/> }
+                                            {...register("forma_pago_id", {required: true})}
+                                        />
+                                        <p>Transferencia bancaria</p>
+                                    </div>
+                                </div> 
+                                </RadioGroup>
+                                </FormControl>    
+                            </div>
                         </div>
-                    </div>
-                    <div className="PriceTotal">
-                        <div className="InfoPriceTotal"> 
-                            <h3>Total</h3>
-                            <h3>{ formatNumber(sum)}</h3> 
+                        <div className="PriceTotal">
+                            <div className="InfoPriceTotal"> 
+                                <h3>Total</h3>
+                                <h3>{ formatNumber(sum)}</h3> 
+                            </div>
+                            <Button
+                                type="submit"
+                                className="Like"
+                                variant="contained"
+                                color="secondary"
+                            > Procesar Pagos
+                            </Button>
                         </div>
-                        <Button
-                            className="Like"
-                            variant="contained"
-                            color="secondary"
-                        > Procesar Pagos
-                        </Button>
-                    </div>
-                    <div className="ButtonPay">
-                    
-                    </div>
+                    </form>
                 </div>
                 <div className="ProductsInfoBuy">
                     {renderItemsBuy.length > 0?renderItemsBuy: 

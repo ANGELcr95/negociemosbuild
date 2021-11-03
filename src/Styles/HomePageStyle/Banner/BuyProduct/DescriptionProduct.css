@@ -1,33 +1,27 @@
 .DescriptionProduct{
     background-color: white;
-    color: black;
-}
-.Description{
-    display: flex;
-    flex-direction: column;
-    margin: 2rem auto 1rem auto;
+    color: rgba(0, 0, 0, 0.527);
 }
 
-.Description h3{
-    padding-left: 20%;
-    width: 100%;
+.Description {
     text-align: left;
-    
+    color: rgb(88, 88, 88);
+}
+
+.Description h2{
+    width: 100%;
+    font-weight: 700;
 }
 
 .Description p{
-    padding-left: 20%;
     width: 100%;
-    font-size: 0.9rem;
-    text-align: left;
+    font-size: 1.2rem;
 }
 
 .InfoBuyProduct{
-    background-color:#6b768b;
-    width: 60%;
-    display: flex;
+    /* display: flex; */
     color:black;
-    margin: 5vh auto 20vh auto;
+    margin: 5rem auto 20vh auto;
     
 }
 

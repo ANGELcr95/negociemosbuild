@@ -12,9 +12,9 @@ import img4 from './imgexcl/img4.jpg';
 
 const ExclusiveBrands = () => {
     return (
-        <div className="ExclusiveBrands"> 
-        <h5>MARCAS EXCLUSIVAS</h5>
-            <div className="ExclusiveBrandsImg">
+        <div className="ExclusiveBrands row col-md-12 mx-auto"> 
+        <h4>MARCAS EXCLUSIVAS</h4>
+            <div className="ExclusiveBrandsImg col-md-8">
                 <article className="uno">
                     <a ><img src={img1} alt="5" /></a>
                     <AcUnitIcon style={{color: '#0096d2', fontSize: 80}}/>

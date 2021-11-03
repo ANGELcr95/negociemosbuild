@@ -10,11 +10,11 @@ const BannerInfo = ({item}) => {
     const dispatch = useDispatch()
 
     return (
-        <div className="BannerInfo">
+        <div className="BannerInfo ">
             <div className="DescriptionBanner">
                 <h4>{item.DESCRIPCION}</h4>
                 <p>
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,sino que tambien ingresó como texto de relleno en documentos electrónicos
                 </p>
                 <Link to={`/compraproducto/${item.ID_ITEM}`} style={{textDecoration:"none"}}>
                 <Button variant="contained"  color="secondary" disableElevation  onClick={()=>{dispatch(getProductBuyAction(item))}}>

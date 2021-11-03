@@ -13,6 +13,8 @@ import {Provider} from 'react-redux'
 import generateStore from './redux/store';
 import Laboratorie from './components/Laboratorie';
 import PurchaseSummary from './components/PurcharseSummary';
+import PruebaPostToken from './services/PruebaPostToken';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -29,7 +31,8 @@ function App() {
             <Products exact path="/productos"/>
             <Laboratorie exact path="/laboratorio/:id"/>
             <PurchaseSummary exact path="/compras"/>
-            </Switch>
+            <PruebaPostToken exact path="/prueba"/>
+          </Switch>
         </Provider>
       </Router>
     </div>

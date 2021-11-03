@@ -95,17 +95,13 @@ const ProductsBuy = () => {
     const renderItemsBuy = itemsBuy.map(itemBuy=> <ItemBuy key={itemsBuy.item_id} itemBuy={itemBuy} sum={sum}/>)
 
     return (
-        <div className="ProductsBuy">
-            <div className="RouteBuy">
-                <h3>Resumen de Compra</h3>
-                <p>Incio - Resumen de Compra</p>
-            </div>
-            <div className='DescriptionPay'>
-                <div className='DescriptionBuy '>
+        <div className="ProductsBuy row col-sm-12  col-xl-9 mx-auto p-0">
+            <div className='DescriptionPay d-md-flex col-10 col-sm-11 col-xl-12  mx-auto p-0'>
+                <div className='DescriptionBuy col-12 col-sm-9 col-md-6 col-lg-6 mx-auto p-0'>
                     <h3>Detalles de la facturacion y despacho</h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        <div className="DescriptionInfoBuy">
+                        <div className="DescriptionInfoBuy ">
 
                             <div className="SendAddress">
                                 <h5>Distribuidora Negociemos</h5>
@@ -115,25 +111,25 @@ const ProductsBuy = () => {
                                 <p>Cali, Valle del Cauca</p>
                             </div>
 
-                            <div className="DeliveryAddress">
+                            <div className="DeliveryAddress col-sm-12  p-0">
                                 <h5>Domicilio de Entrega</h5>
-                                <div className="Info">  
-                                    <TextField id="filled-basic" {...register("contacto", {required: true})} label="Nombre" variant="filled" />
+                                <div className="Info col-md-12 p-0 mb-2">  
+                                    <TextField className="col-md-12 p-0" id="filled-basic" {...register("contacto", {required: true})} label="Nombre" variant="filled" />
                                     {/* <TextField id="filled-basic" {...register("apellido", {required: true})} label="Apellido" variant="filled" /> */}
                                 </div>
-                                <div className="Info">
-                                    <TextField id="filled-basic" {...register("email", {required: true})} label="Email" variant="filled" />
+                                <div className="Info col-md-12 p-0 mb-2">
+                                    <TextField className="col-md-12 p-0" id="filled-basic" {...register("email", {required: true})} label="Email" variant="filled" />
                                 </div>
                                 {/* <div className="InfoPLace">
                                     <TextField id="filled-basic" {...register("direccion", {required: true})} label="Dirección" variant="filled" />
                                 </div> */}
-                                <div className="InfoPlace">
-                                    <TextField id="filled-basic" {...register("telefono", {required: true})} label="Telefono" variant="filled" />
-                                    <TextField id="filled-basic" {...register("movil", {required: true})} label="Movil" variant="filled" />
+                                <div className="InfoPlace row col-md-12 mx-auto p-0 mb-2 ">
+                                    <TextField className="col-md-12 col-lg-5  mb-2" id="filled-basic" {...register("telefono", {required: true})} label="Telefono" variant="filled" />
+                                    <TextField className="col-md-12 col-lg-6  mb-2" id="filled-basic" {...register("movil", {required: true})} label="Movil" variant="filled" />
                                 </div>
-                                <div className="InfoSend">
-                                    <TextField id="filled-basic" {...register("direccion", {required: true})} label="Dirección" variant="filled" />
-                                    <TextField id="filled-basic" {...register("ciudad", {required: true})} label="Ciudad" variant="filled" />
+                                <div className="InfoSend row col-md-12 mx-auto p-0 mb-2">
+                                    <TextField className="col-md-12 col-lg-5  mb-2" id="filled-basic" {...register("direccion", {required: true})} label="Dirección" variant="filled" />
+                                    <TextField className="col-md-12 col-lg-6  mb-2" id="filled-basic" {...register("ciudad", {required: true})} label="Ciudad" variant="filled" />
                                 </div>
                             </div>
                             <div className="PayProducts">
@@ -193,6 +189,9 @@ const ProductsBuy = () => {
                             </div>
                         </div>
                         <div className="PriceTotal">
+                            <div className="Discount">
+                                <h4>10% Descuento</h4>
+                            </div>
                             <div className="InfoPriceTotal"> 
                                 <h3>Total</h3>
                                 <h3>{ formatNumber(sum)}</h3> 
@@ -207,7 +206,7 @@ const ProductsBuy = () => {
                         </div>
                     </form>
                 </div>
-                <div className="ProductsInfoBuy">
+                <div className="ProductsInfoBuy col-12 col-sm-9 col-md-5 p-0 mx-auto mt-5 ">
                     {renderItemsBuy.length > 0?renderItemsBuy: 
                     <div className="EmptyCar">
                         <img src="carrito_vacio.png"></img>

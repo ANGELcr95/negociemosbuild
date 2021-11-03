@@ -4,6 +4,8 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .ImgBuyCrud {
@@ -16,8 +18,16 @@
 }
 .DescriptionBuyCrud {
     width: 28%;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: left;
+} 
+
+.DescriptionBuyCrud h5{
+    font-size: 1rem;
+    margin: 0;
+}
+.DescriptionBuyCrud p{
+    margin: 0;
 } 
 
 .DescriptionBuyCrud button{
@@ -28,8 +38,11 @@
 
 .Price {
     width: 30%;
-    font-size: 1rem;
     color: green;
     text-align: left;
+}
+
+.Price h4{
+    font-size: 1.2rem;
 }
 

@@ -4,9 +4,9 @@ import React from 'react';
 const Suggestions = () => {
 
     return (
-        <div className="Suggestions">
-            <h5>TE SUGERIMOS</h5>
-            <div className="GridSuggestions">
+        <div className="Suggestions row col-md-12  col-lg-10 col-xl-8 mx-auto p-0">
+            <h4>TE SUGERIMOS</h4>
+            <div className="GridSuggestions p-0">
                 <div className="SuggestionsImg1">
                     <img src="img/8850769020106.jpg"></img>
                 </div>

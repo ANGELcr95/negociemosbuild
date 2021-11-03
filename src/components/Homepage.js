@@ -12,14 +12,16 @@ import RedFixed from './RedFixed';
 import img from "./bg-main.jpg"
 
 const HomePage = () => {
+    // className="BannerImg" style={{backgroundImage:`url(${img})`}}
     return (
-        <div className="HomePage">
-            <div className="BannerImg" style={{backgroundImage:`url(${img})`}}>
-                <Information/>
-                <NavigationBar/>
-                {/* <RedFixed/> */}
-                <Banner/>
+        <div className="HomePage col-12 p-0">
+            <Information/>
+            <div className="BannerImg pt-3" style={{backgroundImage:`url(${img})`}}>
+            <NavigationBar/>
+            {/* <RedFixed/> */}
+            <Banner/>
             </div>
+
             {/* <Telefares/> */}
             <Suggestions/>
             <Services/>

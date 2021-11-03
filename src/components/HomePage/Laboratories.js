@@ -54,12 +54,20 @@ const App = () => {
 	const dispatch = useDispatch()
 
 	// const laboratorie = useSelector(store=> store.dataLaboratorie.array)
-
+// 	if (screenX < 1024) 
+// 	document.write ("Pequeña") 
+//  else 
+// 	if (screen.width < 1280) 
+// 	   document.write ("Mediana") 
+// 	else 
+// 	   document.write ("Grande") 
 
 	return (
-		<div className="Laboratories">
-			<Titulo>Laboratorios</Titulo>
+		<div className="Laboratories row col-md-12 col-lg-12 mx-auto">
+			<Titulo>LABORATORIOS</Titulo>
 			<Slideshow controles={true} autoplay={true} velocidad="1500">
+	{/* { screenX < 1024 ? console.log("peuena"): console.log("grande")} */}
+
 				<Slide>
 					<div>
 						<Link onClick={()=> dispatch(getLaboratorieAction(AG))} to="/laboratorio/AG" style={{textDecoration:"none"}}>
@@ -166,12 +174,12 @@ const App = () => {
 	);
 }
 
-const Titulo = styled.p`
-	font-size: 18px;
-	font-weight: 700;
-	text-transform: uppercase;
-	margin-bottom: 10px;
-  color:black;
+const Titulo = styled.h4`
+	margin-top: 2.2rem;
+    margin-bottom: 2rem;
+    color:rgb(83, 182, 248);
+    font-size: 1.4rem;
+    font-weight: 700;
 `;
  
 export default App;

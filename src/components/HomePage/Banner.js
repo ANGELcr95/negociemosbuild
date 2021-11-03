@@ -9,15 +9,17 @@ import {getProductsAction} from '../../redux/negociemosDucks'
 
 const Banner = () => {
     const dispatch = useDispatch()
-
     useEffect(()=> {
-        const dataNoObs = data.filter(data=> {return data.PRECIO_MIN_1 != 1 && data.PRECIO_MIN_1 != null})
+        const dataNoObs = data.filter(data=> {return data.PRECIO_MIN_1 != 1 && data.PRECIO_MIN_1 != null && !isNaN(data.PRECIO_MIN_1)})
         dispatch(getProductsAction(dataNoObs)) 
     },[])
 
     const infoBanner = useSelector(store=> store.dataProducts.array)
 
-    const[currentPage] = useState(Math.floor(Math.random()*(infoBanner.length-5))) 
+    console.log(infoBanner.length,"info")
+    // console.log(dataNoObs.length,"data")
+
+    const[currentPage] = useState(Math.floor(Math.random()*(infoBanner.length? infoBanner.length-5 :infoBanner.length))) 
     let[indexOfFirstPost,setIndexOfFirstPost] = useState(currentPage)
     let[indexOfLastPost,setIndexOfLastPost] = useState(currentPage+1)
 
@@ -48,7 +50,7 @@ const Banner = () => {
     })
 
     return (
-        <div className="Banner">
+        <div className="Banner row col-sm-12 col-md-10  col-xl-6 mx-auto p-0">
             {listBannerSlice}
             <ul className="pageNumbersBanner">
                 {renderPageNumbers}

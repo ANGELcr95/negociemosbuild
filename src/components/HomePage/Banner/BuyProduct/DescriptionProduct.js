@@ -64,16 +64,13 @@ const DescriptionProduct = () => {
     }
 
     return (
-        <div className="DescriptionProduct">
-             <div className='Description'>
-                <h3>Nuestros Productos</h3>
-                <p>Incio - Nuestros productos</p>
-            </div>
-            <div className="InfoBuyProduct">
-                <div className="ImgBuyProduct">
-                    {item.ID_CODBAR? <img src={`img/${item.ID_CODBAR}.jpg`} alt="img"></img>:<img src={"img/036600813719.jpg"} alt="404"></img>}
+        <div className="DescriptionProduct row col-sm-11 col-lg-8 col-xl-7 mx-auto p-0">
+             
+            <div className="InfoBuyProduct row  col-sm-12 p-0">
+                <div className="ImgBuyProduct col-10  col-sm-5 mx-auto">
+                    {item.ID_CODBAR? <img className="mx-auto p-0" src={`img/${item.ID_CODBAR}.jpg`} alt="img"></img>:<img  className="mx-auto p-0" src={"img/036600813719.jpg"} alt="404"></img>}
                 </div>
-                <div className="PicreAndDescription">
+                <div className="PicreAndDescription col-10  col-sm-7 mx-auto">
                     <p>{item.length != 0? item.CMLINEAS_DESCRIPCION: itemLocal.CMLINEAS_DESCRIPCION}</p>
                     <h3>{item.length != 0? item.DESCRIPCION: itemLocal.DESCRIPCION}</h3>
                     <div className="Prices">
@@ -81,14 +78,14 @@ const DescriptionProduct = () => {
                         <h3 >{formatNumber(item.length != 0?item.PRECIO_MIN_1: itemLocal.PRECIO_MIN_1)}</h3>
                             <p>Ahora</p>
                         </div>
-                        {item.length != 0 && item.ULTIMO_COSTO_ED < item.PRECIO_MIN_1? 
+                        {/* {item.length != 0 && item.ULTIMO_COSTO_ED < item.PRECIO_MIN_1? 
                          <h5 className="Tachado">{formatNumber(item.length != 0?(item.PRECIO_MIN_1)*1.1:(itemLocal.PRECIO_MIN_1)*1.1)}</h5>:
                          null
                         }
                         {item.length == 0 && itemLocal.ULTIMO_COSTO_ED < itemLocal.PRECIO_MIN_1? 
                          <h5 className="Tachado">{formatNumber(itemLocal.length != 0?itemLocal.PRECIO_MIN_1:itemLocal.PRECIO_MIN_1)}</h5>:
                          null
-                        }
+                        } */}
                     </div>
                     <p>
                     {item.DESC_ITEM_PADRE}
@@ -128,8 +125,8 @@ const DescriptionProduct = () => {
                     </form>
                     <div className="RedInfo"> 
                         <p> Ref:        {item.length != 0?item.ID_REFERENCIA:itemLocal.ID_REFERENCIA}</p>
-                        <p> Categoria:  Antiesaminico   </p>
-                        <p> Etiqietas:  Medivameneto Pastilla</p>
+                        <p> Categoria:  Antiesaminico (Fijo)  </p>
+                        <p> Etiqietas:  Medicameneto Pastilla (Fijo)</p>
                     </div>
                 </div>
             </div>

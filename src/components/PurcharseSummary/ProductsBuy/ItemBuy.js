@@ -28,11 +28,11 @@ const ItemBuy = ({itemBuy}) => {
     console.log(counItem)
 
     return (
-        <div className="ItemBuy">
-            <div className="ImgBuyCrud">
+        <div className="ItemBuy row col-11 col-sm-12 mx-auto p-0 pb-1">
+            <div className="ImgBuyCrud col-12 col-lg-6 mx-auto p-0 pb-2">
             {itemBuy.item_ext? <img src={`img/${itemBuy.item_ext}.jpg`} alt="img" natural></img>:<img src={"img/036600813719.jpg"} alt="404"></img>}
             </div>
-            <div className="DescriptionBuyCrud">
+            <div className="DescriptionBuyCrud col-6 col-lg-3 mx-auto p-0 pb-2">
             { itemBuy.item_nombre ? <h5>{itemBuy.item_nombre}</h5>:null}
             {itemBuy.valor_unitario? <p>Cantidad: {itemBuy.cantidad}</p>:null}
             <Button 
@@ -49,7 +49,7 @@ const ItemBuy = ({itemBuy}) => {
                 </Button>
                 </Link> */}
             </div>
-            <div className="Price">
+            <div className="Price col-6 col-lg-3 mx-auto p-0 pb-2">
                 {itemBuy.valor_unitario? <h4>{formatNumber(itemBuy.valor_unitario)} </h4>:null}
             </div>
             

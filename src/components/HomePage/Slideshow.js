@@ -87,6 +87,9 @@ const ContenedorPrincipal = styled.div`
 const ContenedorSlideshow = styled.div`
 	width:200%;
 	display: flex;
+	@media (max-width: 960px) {
+    width:400%;
+  }
 	// flex-wrap: nowrap;
 `;
 
@@ -104,6 +107,12 @@ const Slide = styled.div`
 		width: 70%;
 		vertical-align: top;
 	}
+	/* @media (max-width: 960px) {
+		img {
+		width: 90%;
+		vertical-align: top;
+	} */
+  /* } */
 `;
 
 const TextoSlide = styled.div`

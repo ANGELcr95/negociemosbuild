@@ -7,10 +7,14 @@ import img from "./bg-main.jpg"
 
 const PurchaseSummary = () => {
     return (
-        <div className="PurchaseSummary">
-            <div className="BannerImg" style={{backgroundImage:`url(${img})`}}>
+        <div className="PurchaseSummary col-12 p-0">
             <Information/>
-            <NavigationBar/>
+            <div className="BannerImg pt-3 pb-2 mb-5" style={{backgroundImage:`url(${img})`}}>
+                <NavigationBar/>
+                <div className="RouteBuy row col-sm-11 col-lg-10 col-xl-8 mx-auto p-0">
+                    <h2>Resumen de Compra</h2>
+                    <p>Incio {`>`} Resumen de Compra</p>
+                </div>
             </div>
             <ProductsBuy/>
         </div>

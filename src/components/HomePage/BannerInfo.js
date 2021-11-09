@@ -6,12 +6,10 @@ import { useDispatch } from "react-redux";
 
 
 const BannerInfo = ({item}) => {
-
     const dispatch = useDispatch()
-
     return (
-        <div className="BannerInfo ">
-            <div className="DescriptionBanner">
+        <div className="BannerInfo row ">
+            <div className="DescriptionBanner col-sm-12 col-md-6 mx-auto">
                 <h4>{item.DESCRIPCION}</h4>
                 <p>
                     Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,sino que tambien ingresó como texto de relleno en documentos electrónicos
@@ -22,7 +20,7 @@ const BannerInfo = ({item}) => {
                 </Button>
                 </Link>
             </div>
-            <div className="ImgBanner">
+            <div className="ImgBanner col-sm-12 col-md-6 mx-auto pb-4">
                 {item.ID_CODBAR? <img src={`img/${item.ID_CODBAR}.jpg`} alt="img"></img>:<img src={"img/036600813719.jpg"} alt="404"></img>}
             </div>
         </div>

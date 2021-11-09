@@ -87,9 +87,15 @@ const ContenedorPrincipal = styled.div`
 const ContenedorSlideshow = styled.div`
 	width:200%;
 	display: flex;
-	@media (max-width: 960px) {
+	@media (max-width: 720px) {
     width:400%;
-  }
+  	}
+	@media (max-width: 576px) {
+    width:600%;
+  	}
+	@media (max-width: 320px) {
+    width:1200%;
+  	}
 	// flex-wrap: nowrap;
 `;
 
@@ -140,6 +146,9 @@ const Controles = styled.div`
 `;
 
 const Boton = styled.button`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	pointer-events: all;
 	background: none;
 	border: none;

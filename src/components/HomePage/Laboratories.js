@@ -56,26 +56,26 @@ const App = () => {
 
     const [is320px, set320px] = useState(false)
     const [is576px, set576px] = useState(false)
-    const [is720px, set720px] = useState(false)
-    const [ismas720px, setmas720px] = useState(false)
+    const [is992px, set992px] = useState(false)
+    const [ismas992px, setmas992px] = useState(false)
     
     const [buttonPopUp, setButtonPopUp] = useState(false)
 
     useEffect(()=> {
 		console.log(window.screen.width)
-        if (window.screen.width >720) {
-            setmas720px(true)
+        if (window.screen.width >991) {
+            setmas992px(true)
         }
-        if(window.screen.width > 576 && window.screen.width <721  ){
-            set720px(true)
+        if(window.screen.width > 576 && window.screen.width <992  ){
+            set992px(true)
         }
-        if(window.screen.width <320 && window.screen.width <576  ){
+        if(window.screen.width <577  ){
             set576px(true)
         }
-        if(window.screen.width <320 ){
-            set320px(true)
-        }
-    },[ismas720px,is720px])
+        // if(window.screen.width <320 ){
+        //     set320px(true)
+        // }
+    },[ismas992px,is992px])
 
 
 
@@ -83,7 +83,7 @@ const App = () => {
 	return (
 		<div className="Laboratories row col-11 col-sm-10 col-md-11 col-lg-11 col-xl-10 mx-auto  p-0">
 			<Titulo>LABORATORIOS</Titulo>
-			{/* {ismas720px? 
+			{ismas992px? 
 			<Slideshow controles={true} autoplay={true} velocidad="1500">
 				<Slide>
 					<div>
@@ -189,8 +189,8 @@ const App = () => {
 			</Slideshow> : null
 			}
 
-			{is720px ? 
-			<Slideshow controles={true} autoplay={true} velocidad="1500">
+			{is992px ? 
+			<Slideshow controles={true} autoplay={true} velocidad="1000">
 				<Slide>
 					<div>
 						<Link onClick={()=> dispatch(getLaboratorieAction(AG))} to="/laboratorio/AG" style={{textDecoration:"none"}}>
@@ -298,7 +298,8 @@ const App = () => {
 					</div>
 				</Slide> 
 			</Slideshow> : null
-			} */}
+			}
+			{is576px ? 
 			<Slideshow controles={true} autoplay={true} velocidad="500">
 				<Slide>
 					<div>
@@ -422,7 +423,8 @@ const App = () => {
 						</Link>
 					</div>
 				</Slide> 
-			</Slideshow>
+			</Slideshow> :null
+			}
 		</div>
 	);
 }

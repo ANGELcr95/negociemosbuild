@@ -14,23 +14,23 @@ const ExclusiveBrands = () => {
     return (
         <div className="ExclusiveBrands row col-md-12 mx-auto"> 
         <h4>MARCAS EXCLUSIVAS</h4>
-            <div className="ExclusiveBrandsImg col-md-8">
-                <article className="uno">
+            <div className="ExclusiveBrandsImg row col-sm-12 col-md-11 col-lg-10 col-xl-8 mx-auto">
+                <article className="uno col-sm-6" >
                     <a ><img src={img1} alt="5" /></a>
                     <AcUnitIcon style={{color: '#0096d2', fontSize: 80}}/>
                     <div ></div>
                 </article>
-                <article className="dos">
+                <article className="dos uno col-sm-6">
                     <a ><img src={img2} alt="5" /></a>
                     <AllInclusiveIcon style={{color: '#0096d2', fontSize: 80}}/>
                     <div ></div>
                 </article>
-                <article className="tres">
+                <article className="tres col-sm-6" >
                     <a ><img src={img3} alt="5" /></a>
                     <MemoryIcon style={{color: '#0096d2', fontSize: 80}}/>
                     <div ></div>
                 </article>
-                <article className="cuatro">
+                <article className="cuatro col-sm-6">
                     <a ><img src={img4} alt="5" /></a>
                     <TripOriginIcon style={{color: '#0096d2', fontSize: 80}}/>
                     <div ></div>

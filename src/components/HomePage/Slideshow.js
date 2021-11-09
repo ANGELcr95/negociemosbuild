@@ -87,7 +87,7 @@ const ContenedorPrincipal = styled.div`
 const ContenedorSlideshow = styled.div`
 	width:200%;
 	display: flex;
-	@media (max-width: 720px) {
+	@media (max-width: 992px) {
     width:400%;
   	}
 	@media (max-width: 576px) {

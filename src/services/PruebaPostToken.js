@@ -64,25 +64,15 @@ const PruebaPostToken = () => {
         //     })
         // });
 
-
-
-
-
-
-
-
-
-
-
-
         const promesa = await axios.post('https://myplace.distribuidoranegociemos.com/api.atlas.negociemos/rest/ws/login', {
             login: "DN**EC--U001++",
             password: "D1STR1B1D0R4_==_N3G0C13M0$_"
-        },
-        {
-        headers: {
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJETioqRUMtLVUwMDErKyIsImlzcyI6Imh0dHA6Ly8xODEuMTQzLjIzNC4xMzg6ODA4MC9hcGkuYXRsYXMubmVnb2NpZW1vcy9yZXN0L3dzL2xvZ2luIiwiaWF0IjoxNjMwMDcxOTQzLCJleHAiOjE2MzAwNzM3NDN9.t9vlMmZJdblADF2VX1DdreLREcjZvX6xUZVCik_1ttk'
         }
+        ,{
+            headers: {
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJETioqRUMtLVUwMDErKyIsImlzcyI6Imh0dHA6Ly8xODEuMTQzLjIzNC4xMzg6ODA4MC9hcGkuYXRsYXMubmVnb2NpZW1vcy9yZXN0L3dzL2xvZ2luIiwiaWF0IjoxNjMwMDcxOTQzLCJleHAiOjE2MzAwNzM3NDN9.t9vlMmZJdblADF2VX1DdreLREcjZvX6xUZVCik_1ttk',
+                "Content-Type" :"application/x-www-form-urlencoded"
+            }
         })
 
         console.log(promesa)
